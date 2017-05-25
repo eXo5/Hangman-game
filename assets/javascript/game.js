@@ -18,37 +18,47 @@ var wordList = ["Lighthouse", "Boardwalk", "Beach", "Sand", "Waves", "Seagull", 
 	document.onkeyup = function(event) {
 		var userKey = event.key;
 		guess.textContent = " " + userKey;
-		};	
-		//insUndScore takes random word and pushes 
-			function insUndScore(randomWord) {
-			for (var i = 0;  i < randomWord.length; i++) { 
-			underSarray.push(i);
-			answer.innerHTML += "_ ";
-		}
-			console.log(underSarray);
-			console.log(wordArr);
-
+		if (guess !== lettersArr.indexOf(guess);
+			alert("Please choose a letter");
 		
-	};
+		else(guessesArr.push(userKey));
+
+
+		console.log("Guess Array: " + guessesArr);	
 
 			function checkGuess(guess) {
-		
-				if (guess !== lettersArr.indexOf(guess)); {
-					alert("Please choose a letter");
+					if (guess !== lettersArr.indexOf(guess)); {
+				alert("Please choose a letter");
 					};
 
 				//if (guess !== guessesArr.indexOf(guess));{ 
 				//	for (var i = 0; [i] < wordArr; i++){
 				//	if (i == wordArr.indexOf(guess));
 				//	};
-				//	guessesArr.push(userKey);
-				//	console.log(guessesArr);	
+				//	
 				//	}
 
 					//else (guess == guessesArr.indexOf(guess))
 					//}
 						
 			};
+
+
+
+		};	
+		//insUndScore takes random word and pushes 
+			function insUndScore(randomWord) {
+			for (var i = 0;  i < randomWord.length; i++) { 
+				underSarray.push("_");
+				answer.innerHTML += "_ ";
+			}
+			console.log(underSarray);
+			console.log(wordArr);
+
+		
+	};
+
+			
 
 
 			 
@@ -68,6 +78,7 @@ var wordList = ["Lighthouse", "Boardwalk", "Beach", "Sand", "Waves", "Seagull", 
 //gamestart();
 	
 insUndScore(randomWord);
+
 console.log(wordArr);
 checkGuess(guess);
 console.log(guessesArr.indexOf(wordArr));

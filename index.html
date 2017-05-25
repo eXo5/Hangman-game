@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 	<title>YingMan</title>
 
 </head>
@@ -13,14 +14,14 @@
 <p> The word is: <span id="answer"> </span></p>
 <br>
 <p> Your guess is:<span id="guess"> </span></p>
-<p>You have:<span id="guessesLeft"> guesses left</span></p>
+<p>You have:<span id="guessesLeft"> </span></p>
 <p>Your score is: <span id="score"> </span></p>
 <p>So far you've guessed: <span id="guesses"> </span></p>
 
 <script type="text/javascript">
 	
 	var wordList = ["Lighthouse", "Boardwalk", "Beach", "Sand", "Waves", "Seagull", "Seashell", "Shark", "Dolphin"];
-	
+	//$ not defined = no jQuery 
 	//declared variables
 	var randomWord = wordList[Math.floor(Math.random() * wordList.length)]; //generate word to be guessed from list
 	var wordlength = randomWord.length //redundant  
@@ -30,33 +31,76 @@
 	var ans = document.querySelector("#answer");
 	var score = document.querySelector("#score");
 	var guess = document.querySelector("#guess");
-	var guesses = document.querySelector("#guesses");
-	var lettersArr = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+	var guessLeft = document.querySelector("#guessesLeft");
+	var guesses = 7; //use document.querySelector to html guesses into the span id=guessesLeft.
+	//var document.querySelector("#guesses");
+	var lettersArr = ["a", "b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
 	var answer = document.querySelector("#answer");
 
-	
+		function checkGuess(userKey){
+			if (lettersArr.indexOf(userKey) == -1){ 
+				alert("Please choose a letter");
+			}
+					//if not in word and not in guessArr
+				if ((wordArr.indexOf(userKey) == -1) && (guessesArr.indexOf(userKey) == -1)) {
+					guessesArr.push(userKey);
+					--guesses;
+					guessLeft.textContent = ("guesses left:" + guesses); 
+				}
+			else {
+					for (var i = 0; i < wordArr.length; i++)
+					 	if (userKey == wordArr[i]) {
+					 	//var x = wordArr.indexOf(userKey);
+						underSarray[i] = userKey;
+						
+
+						//x = wordArr.indexOf(userKey, x+1);
+						answer.innerHTML = underSarray.join(" ");
+					}
+				}
+		 };
+		 //insUndScore takes random word and pushes 
+		function insUndScore(randomWord) {
+			for (var i = 0;  i < randomWord.length; i++) { 
+				underSarray.push("_");
+				answer.innerHTML = underSarray.join(" ");
+				//answer.innerHTML = underSarray; left this out because it included the commas associated with the underscore array
+			}
+
+			console.log(underSarray);
+			console.log(wordArr);	
+		}	
+
+		console.log("randomword:" + randomWord);
+		insUndScore(randomWord);
+
+
 	//userKey = guess a letter && push guess into array for guesses.
 	document.onkeyup = function(event) {
 		var userKey = event.key;
 		guess.textContent = " " + userKey;
-		};	
-		//insUndScore takes random word and pushes 
-			function insUndScore(randomWord) {
-			for (var i = 0;  i < randomWord.length; i++) { 
-			underSarray.push(i);
-			answer.innerHTML += "_ ";
+		checkGuess(userKey)
+		console.log("guessesArr: " + guessesArr);
+
+
 		}
-			console.log(underSarray);
-			console.log(wordArr);
 
 		
-	};
 
-			function checkGuess(guess) {
+			
+				
+		//else (guessesArr.push(userKey));
+	
 		
-				if (guess !== lettersArr.indexOf(guess)); {
-					alert("Please choose a letter");
-					};
+
+		
+	
+
+			//function checkGuess(guess) {
+		
+			//	if (guess !== lettersArr.indexOf(guess)); {
+			//		alert("Please choose a letter");
+			// 		};
 
 				//if (guess !== guessesArr.indexOf(guess));{ 
 				//	for (var i = 0; [i] < wordArr; i++){
@@ -69,7 +113,7 @@
 					//else (guess == guessesArr.indexOf(guess))
 					//}
 						
-			};
+		
 
 
 			 
@@ -88,21 +132,13 @@
 //		};
 //gamestart();
 	
-insUndScore(randomWord);
-console.log(wordArr);
-checkGuess(guess);
-console.log(guessesArr.indexOf(wordArr));
+//insUndScore(randomWord);
+//console.log(wordArr);
+//checkGuess(guess);
+
 
 	
-	//	function checkGuess(userKey) {
-	//		for (var i = 0;  i < indexOf(wordArr); i++) { 
-	//	 	console.log(indexOf(wordArr));
-	//	 		};
-	
-	//console.log(wordArr);
-//	insUndScore();
 
-//	document.write(insUndScore(wordLength));
 
 //    for(var i = 0; i < wordUsed.length; i++)
  //   {
