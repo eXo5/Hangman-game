@@ -1,4 +1,5 @@
 $(document).ready(function(){
+	var guessesLeft;
 	//$("#hangman").html("<div><h1>HANGMAN</h1></div>")
 })
 	//our metaphorical toolbox
@@ -11,7 +12,7 @@ $(document).ready(function(){
 	var pickedWord = pickAWordAnyWord.split("");
 	//Effectively, we'll use this to modify the pickedWord.
 	var wordToGuess;
-	var guessesLeft;
+
 	//console.log the word for testing purposes that way you're not playing hangman while you're working on it haha
 	console.log(pickAWordAnyWord)
 	//Start the game by clicking "Play A Game" button
@@ -19,7 +20,7 @@ $("button").click(function(){
 	$("#wordClue").html("<br /><p style='text-align:center'>This word can be found in a toolbox</p>")
 	//declare vars
 
-	guessesLeft = 7;
+guessesLeft = 7;
 
 	//alert(pickAWordAnyWord)
 	//alert(toolbox[Math.floor(Math.random()* toolbox.length)])
@@ -34,7 +35,10 @@ $("button").click(function(){
 	
 $(document).keyup(function(event) {
 	var userKey = event.key;
-console.log(pickedWord)
+		console.log(pickedWord)
+		if (guessesLeft > 0){
+			$("#guessesLeft").html("You have " + guessesLeft + " guesses left!")
+		
 	if (event.keyCode >= 65 && event.keyCode <= 90){
   	//check if the event that occurred was a letter 
 		if (guesses.indexOf(userKey) == -1) {
@@ -54,14 +58,19 @@ console.log(pickedWord)
 			}
 		}	else if (guesses.indexOf(userKey) > -1 ) {
 			alert("You already guessed that")
-		} else if (pickedWord.indexOf(userKey) == -1){
+		} else if (pickedWord.indexOf(userKey) === -1){
 			guessesLeft--;
 			console.log(guessesLeft)
 		}
-	}//end if event.keyCode
-	
+		
 		console.log(guesses); 
 		$("#guessedLetters").html("<p style='text-align:center'>Guesses: " + guesses.join(" ") + "</p>")
-	
+	}else{
+		alert("Please pick a letter :)")
+	}//end if event.keyCode
+
+	}else if (guessesLeft <= 0){
+			$("#hangman").html("Better luck next time!" + "<button>Play again?</button>")
+		}
 	
 })
