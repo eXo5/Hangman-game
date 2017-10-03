@@ -1,7 +1,4 @@
-$(document).ready(function(){
-	var guessesLeft;
-	//$("#hangman").html("<div><h1>HANGMAN</h1></div>")
-})
+var guessesLeft;
 	//our metaphorical toolbox
 	var toolbox = ["hammer", "drill", "nails", "screws", "flathead screwdriver"];
 	//where guesses get stored after they're clicked
@@ -16,6 +13,7 @@ $(document).ready(function(){
 	//console.log the word for testing purposes that way you're not playing hangman while you're working on it haha
 	console.log(pickAWordAnyWord)
 	//Start the game by clicking "Play A Game" button
+
 $("button").click(function(){
 	$("#wordClue").html("<br /><p style='text-align:center'>This word can be found in a toolbox</p>")
 	//declare vars
@@ -58,7 +56,7 @@ $(document).keyup(function(event) {
 			}
 		}	else if (guesses.indexOf(userKey) > -1 ) {
 			alert("You already guessed that")
-		} else if (pickedWord.indexOf(userKey) === -1){
+		} else if (pickedWord.indexOf(userKey) == -1){
 			guessesLeft--;
 			console.log(guessesLeft)
 		}
